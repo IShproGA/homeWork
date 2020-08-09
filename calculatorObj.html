@@ -118,18 +118,24 @@
         b: 0,
         operator: '',
         newOp: false,
+        resA: 0,
+        resB: 0,
 
         addNumber(num) {
             if (this.newOp == true) {
                 this.inp.value = '';
                 this.inp.value += num;
                 this.newOp = false;
+                this.resB = '';
             } else {
                 this.inp.value += num;
+                this.resB = '';
             }
         },
         getA() {
             this.a = +this.inp.value;
+            this.resA = this.a;
+
         },
         doOp(op) {
             this.getA();
@@ -137,7 +143,13 @@
             this.operator = op;
         },
         getB(num) {
-            this.b = +this.inp.value;
+            if (this.resB == 0) {
+                this.b = +this.inp.value;
+                this.resB = this.b;
+            } else {
+                this.b = this.resB;
+                this.a = +this.inp.value;
+            }
         },
         addition(a, b) {
             var add = a + b;
@@ -199,6 +211,7 @@
                 if (e.target.name == 'res') {
                     this.getB();
                     this.getResult(this.operator);
+
                 }
                 if (e.target.name == 'actRes') {
                     this.reset();

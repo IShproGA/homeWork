@@ -17,6 +17,11 @@
             display: contain;
         }
 
+        .mainPic img {
+            width: 600px;
+            height: 600px;
+        }
+
         .container {
             display: flex;
             flex-direction: row;
@@ -29,11 +34,40 @@
             margin-right: 25px;
         }
 
+        .pictures img {
+            width: 100px;
+            border-radius: 10px;
+        }
+
+        .pictures img:hover {
+            border: 1px solid salmon;
+            border-radius: 10px;
+        }
+
         .arows {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             width: 600px;
+            margin-top: 10px;
+        }
+
+        .rigtAr {
+            border: 1px solid salmon;
+            border-radius: 5px;
+        }
+
+        .rigtAr:hover {
+            background-color: salmon;
+        }
+
+        .lefAr:hover {
+            background-color: salmon;
+        }
+
+        .lefAr {
+            border: 1px solid salmon;
+            border-radius: 5px;
         }
     </style>
     <div id="app">
