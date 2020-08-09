@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .mainPic {
+            height: 600px;
+            width: 600px;
+            background-color: green;
+            margin-bottom: 10px;
+            display: contain;
+        }
+
+        .mainPic img {
+            width: 600px;
+            height: 600px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .pictures {
+            display: flex;
+            height: 100px;
+            width: 100px;
+            margin-right: 25px;
+        }
+
+        .pictures img {
+            width: 100px;
+            border-radius: 10px;
+        }
+
+        .pictures img:hover {
+            border: 1px solid salmon;
+            border-radius: 10px;
+        }
+
+        .arows {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 600px;
+            margin-top: 10px;
+        }
+
+        .rigtAr {
+            border: 1px solid salmon;
+            border-radius: 5px;
+        }
+
+        .rigtAr:hover {
+            background-color: salmon;
+        }
+
+        .lefAr:hover {
+            background-color: salmon;
+        }
+
+        .lefAr {
+            border: 1px solid salmon;
+            border-radius: 5px;
+        }
+    </style>
+    <div id="app">
+        <div class="mainPic">
+            <img src="https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem2.jpg" data-num='2'
+                id="main">
+        </div>
+        <div class="container">
+            <div class="pictures">
+                <img src="https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem1.jpg"
+                    name="pictures" data-num='1' alt="">
+            </div>
+            <div class="pictures">
+                <img src="https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem2.jpg"
+                    name="pictures" data-num='2' alt="">
+            </div>
+            <div class="pictures">
+                <img src="https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem3.jpg"
+                    name="pictures" data-num='3' alt="">
+            </div>
+            <div class="pictures">
+                <img src="https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem4.jpg"
+                    name="pictures" data-num='4' alt="">
+            </div>
+            <div class="pictures">
+                <img src="https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem5.jpg"
+                    name="pictures" data-num='5' alt="">
+            </div>
+        </div>
+        <div class="arows" data-ar="arows">
+            <div class="lefAr" id="lefAr">
+                <<< </div>
+                    <div class="rigtAr" id="rigtAr">
+                        >>>
+                    </div>
+            </div>
+        </div>
+        <script>
+            let slider = document.querySelector('#app');
+            let pictMain = document.querySelector('#main')
+            slider.addEventListener('click', e => {
+                if (e.target.name == 'pictures') {
+                    switchTo("https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem" + e.target.dataset.num + ".jpg", e.target.dataset.num);
+                }
+                if (e.target.id == 'lefAr') {
+                    switchLeft();
+                }
+                if (e.target.id == 'rigtAr') {
+                    switchRigt();
+                }
+            })
+            function switchTo(pict, num) {
+                pictMain.src = pict;
+                pictMain.dataset.num = num;
+            }
+            function switchLeft() {
+                if (pictMain.dataset.num == 1) {
+                    pictMain.dataset.num = 5;
+                } else {
+                    pictMain.dataset.num = pictMain.dataset.num - 1;
+                }
+                pictMain.src = "https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem" + pictMain.dataset.num + ".jpg";
+            }
+            function switchRigt() {
+                if (pictMain.dataset.num == 5) {
+                    pictMain.dataset.num = 1;
+                } else {
+                    pictMain.dataset.num = +pictMain.dataset.num + 1;
+                }
+                pictMain.src = "https://raw.githubusercontent.com/IShproGA/static/master/sliderImg/featuredItem" + pictMain.dataset.num + ".jpg";
+            }
+        </script>
+</body>
+
+</html>
